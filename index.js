@@ -15,5 +15,10 @@ let newServer = socket(server);
 
 // Connecting the server to socket.io and get id when connected
 newServer.on('connection', (socket) => {
+  // Check to see if there is a message and send that message to every client that is connected
+  socket.on('sendingMessage', (data) => {
+  newServer.emit('broadcastMessage', data)
+})
+
   console.log('Websocket Connected', socket.id);
 });
