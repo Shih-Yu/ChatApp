@@ -14,3 +14,8 @@ button.addEventListener('click', () => {
     username: username.value
   })
 })
+
+// Display messages in chat from the server
+socket.on('broadcastMessage', (data) => {
+  output.innerHTML += '<p><strong>' + data.username + ": </strong>" + data.message + '</p>'
+})
